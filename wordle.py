@@ -225,18 +225,23 @@ while run == True:
     pressed = pygame.mouse.get_pressed()
 
     
-    if wordle.pressed == False and event.type == pygame.KEYDOWN:
+    if wordle.pressed == False:
         for i in range(len(letters)):
             if keys[ (keyInput[i]) ]:
+                wordle.pressed = True
                 wordle.addChar( letters[i] )
                                 
         if keys[(pygame.K_BACKSPACE)]:
+            wordle.pressed = True
             wordle.delChar()
 
         if keys[(pygame.K_RETURN)]:
+            wordle.pressed = True
             wordle.doEnter()
-                
-    wordle.setPressed()
+
+    if event.type == pygame.KEYUP:
+        wordle.pressed = False        
+    #wordle.setPressed()
     
     
     win.fill((255,255,255))

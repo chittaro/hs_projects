@@ -225,6 +225,8 @@ while run==True:
         if event.type==pygame.QUIT:
             run=False
 
+    keys = pygame.key.get_pressed()
+
     if introScreen==True:
         ##start screen
         restart()
@@ -267,13 +269,12 @@ while run==True:
         DifficultyBtns()           
     
     elif startScreen==True:
-        if event.type==pygame.KEYDOWN:
-            if event.key==pygame.K_SPACE:
-                jcount=7
-                monkey=BrownMonk2
-                if Rainbow==True:
-                    rand=random.randint(0,4)
-                    monkey=Jmonkeys[rand]
+        if keys[pygame.K_SPACE]:
+            jcount=7
+            monkey=BrownMonk2
+            if Rainbow==True:
+                rand=random.randint(0,4)
+                monkey=Jmonkeys[rand]
                 
         if event.type==pygame.KEYUP:
             monkey=BrownMonk1
